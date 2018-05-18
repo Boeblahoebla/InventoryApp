@@ -16,9 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".UI.DetailsActivity"
+            android:label="Product Details"
+            android:parentActivityName=".UI.CatalogActivity" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CatalogActivity" />
+        </activity>
+
         <provider
             android:name=".data.ProductProvider"
             android:authorities="com.example.android.inventoryapp"
             android:exported="false" />
     </application>
+
 </manifest>

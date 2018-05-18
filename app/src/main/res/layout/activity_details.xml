@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.inventoryapp.UI.DetailsActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryLight"
+        android:gravity="center_vertical"
+        android:textAlignment="gravity"
+        android:paddingLeft="16dp"
+        android:text="Add a Product"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/labelProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextPrimary"/>
+            <EditText
+                android:id="@+id/editTextProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/colorTextSecundary"/>
+
+            <TextView
+                android:id="@+id/labelProductQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextPrimary"/>
+            <EditText
+                android:id="@+id/editTextProductQuantity"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/colorTextSecundary"/>
+
+            <TextView
+                android:id="@+id/labelProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price (€)"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextPrimary"/>
+            <EditText
+                android:id="@+id/editTextProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/colorTextSecundary"/>
+
+            <TextView
+                android:id="@+id/labelSupplier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Supplier"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextPrimary"/>
+            <EditText
+                android:id="@+id/editTextSupplier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/colorTextSecundary"/>
+
+            <TextView
+                android:id="@+id/labelSupplierEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email address"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextPrimary"/>
+            <EditText
+                android:id="@+id/editTextSupplierEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/colorTextSecundary"/>
+
+            <TextView
+                android:id="@+id/labelSupplierPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telephone number"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextPrimary"/>
+            <EditText
+                android:id="@+id/editTextSupplierPhone"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/colorTextSecundary"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
