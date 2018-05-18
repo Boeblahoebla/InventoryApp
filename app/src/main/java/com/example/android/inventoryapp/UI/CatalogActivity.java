@@ -1,7 +1,9 @@
-package com.example.android.inventoryapp;
+package com.example.android.inventoryapp.UI;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.android.inventoryapp.R;
 
 public class CatalogActivity extends AppCompatActivity {
 

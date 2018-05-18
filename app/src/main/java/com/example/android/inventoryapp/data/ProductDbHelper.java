@@ -48,7 +48,6 @@ public class ProductDbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_PRODUCTS_TABLE);
 
         Log.d("ProductDbHelper", "Table created");
-
     }
 
     @Override
