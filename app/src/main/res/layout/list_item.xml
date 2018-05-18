@@ -28,7 +28,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:src="@drawable/ic_sale_button_grayed"/>
+        android:src="@drawable/ic_sale_button_grayed"
+        android:focusable="false"/>
 
     <TextView
         android:layout_width="wrap_content"

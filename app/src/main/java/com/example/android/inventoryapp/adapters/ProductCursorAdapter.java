@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.android.inventoryapp.R;
@@ -64,9 +65,14 @@ public class ProductCursorAdapter extends CursorAdapter {
         String productQuantity = cursor.getString(quantityColumnIndex);
         String productPrice = cursor.getString(priceColumnIndex);
 
+        // Populate the TextViews with the read values
         nameTextView.setText(productName);
         quantityTextView.setText(productQuantity);
         priceTextView.setText(productPrice);
+
+        // Check for zero quantity to disable the sale imageView
+        // Which can only be visible when there are products available for sale
+        checkForZeroQuantity();
     }
 
     // Helper method to initialise the views
@@ -75,6 +81,30 @@ public class ProductCursorAdapter extends CursorAdapter {
         quantityTextView = view.findViewById(R.id.product_Quantity);
         priceTextView = view.findViewById(R.id.product_price);
         saleImageView = view.findViewById(R.id.saleImage);
+    }
 
+    // Helper method to look for zero quantity
+    private void checkForZeroQuantity(){
+        String quantity = quantityTextView.getText().toString();
+
+        // If there are no more products available for sale
+        // disable the sales button
+        if (quantity == "0"){
+            saleImageView.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public View getView(final int position, View convertView, final ViewGroup parent) {
+
+        saleImageView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                ((ListView) parent).performItemClick(v, position, 0); // Let the event be handled in onItemClick()
+            }
+        });
+
+        return super.getView(position, convertView, parent);
     }
 }

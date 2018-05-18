@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,5 +12,39 @@
         android:layout_height="match_parent"
         android:divider="@color/colorDivider">
     </ListView>
+
+    <RelativeLayout
+        android:id="@+id/empty_view_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/noDataImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_empty_data_colored"
+            android:layout_centerInParent="true"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:id="@+id/noDataTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noDataImageView"
+            android:text="The database is still empty"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/noDataToDoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noDataTextView"
+            android:text="Please insert some data"
+            android:textColor="@color/colorTextSecundary"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"/>
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
