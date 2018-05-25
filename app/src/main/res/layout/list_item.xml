@@ -39,14 +39,14 @@
 
     <TextView
         android:id="@+id/product_price"
-        android:layout_width="60dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:textSize="24sp"
         android:layout_marginRight="@dimen/std32dp"
         android:textAlignment="textEnd"
-        tools:text="@string/example_product_price"/>
+        tools:text="@string/example_product_price" />
 
     <TextView
         android:id="@+id/euroLabel"

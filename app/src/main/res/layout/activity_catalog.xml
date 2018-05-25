@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,19 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorPrimaryLight"
         android:gravity="center_vertical"
-        android:textAlignment="gravity"
         android:paddingLeft="@dimen/std16dp"
-        android:text="Total list of products"/>
+        android:text="@string/totalList"
+        android:textAlignment="gravity"
+        android:textColor="@color/colorPrimaryLight" />
 
     <ListView
         android:id="@+id/productListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/colorDivider"
-        android:layout_below="@id/ActivityLabel">
-    </ListView>
+        android:layout_below="@id/ActivityLabel"
+        android:divider="@color/colorDivider"></ListView>
 
     <RelativeLayout
         android:id="@+id/empty_view_group"
@@ -34,39 +32,40 @@
             android:id="@+id/noDataImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_empty_data_colored"
             android:layout_centerInParent="true"
-            android:layout_margin="@dimen/std16dp"/>
+            android:layout_margin="@dimen/std16dp"
+            android:src="@drawable/ic_empty_data_colored" />
 
         <TextView
             android:id="@+id/noDataTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/noDataImageView"
-            android:text="The database is still empty"
-            android:textColor="@color/colorTextPrimary"
             android:layout_centerHorizontal="true"
-            android:textSize="24sp"/>
+            android:text="@string/emptyList"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/noDataToDoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/noDataTextView"
-            android:text="Please insert some data"
-            android:textColor="@color/colorTextSecundary"
             android:layout_centerHorizontal="true"
-            android:textSize="20sp"/>
+            android:text="@string/fillList"
+            android:textAlignment="center"
+            android:textColor="@color/colorTextSecundary"
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="@dimen/fabSize"
         android:layout_height="@dimen/fabSize"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
         android:layout_marginRight="@dimen/std16dp"
-        android:src="@drawable/ic_add_button"/>
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_add_button" />
 
 </RelativeLayout>

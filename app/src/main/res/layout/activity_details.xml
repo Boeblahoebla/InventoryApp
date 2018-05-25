@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,17 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorPrimaryLight"
         android:gravity="center_vertical"
-        android:textAlignment="gravity"
         android:paddingLeft="@dimen/std16dp"
-        android:text="Add a Product"/>
+        android:text="Add a Product"
+        android:textAlignment="gravity"
+        android:textColor="@color/colorPrimaryLight" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@id/activityLabel">
+        android:layout_below="@id/activityLabel"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,112 +31,120 @@
                 android:id="@+id/labelProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Product name"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="@dimen/std16dp"
-                android:textSize="16sp"
-                android:textColor="@color/colorTextPrimary"/>
+                android:text="@string/nameLabel"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/editTextProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/std16dp"
                 android:layout_marginRight="@dimen/std16dp"
-                android:textColor="@color/colorTextSecundary"/>
+                android:textColor="@color/colorTextSecundary" />
 
             <TextView
                 android:id="@+id/labelProductQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quantity"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="@dimen/std8dp"
-                android:textSize="16sp"
-                android:textColor="@color/colorTextPrimary"/>
+                android:text="@string/quantityLabel"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <EditText
                     android:id="@+id/editTextProductQuantity"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
                     android:layout_marginLeft="@dimen/std16dp"
-                    android:textColor="@color/colorTextSecundary"
-                    android:textAlignment="textEnd"/>
+                    android:inputType="number"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorTextSecundary" />
+
                 <ImageView
                     android:id="@+id/ic_minus"
                     android:layout_width="@dimen/iconSize"
                     android:layout_height="@dimen/iconSize"
-                    android:src="@drawable/ic_min"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/std32dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:src="@drawable/ic_min" />
+
                 <ImageView
                     android:id="@+id/ic_plus"
                     android:layout_width="@dimen/iconSize"
                     android:layout_height="@dimen/iconSize"
-                    android:src="@drawable/ic_plus"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/std32dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:src="@drawable/ic_plus" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/labelProductPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price (€)"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="@dimen/std8dp"
-                android:textSize="16sp"
-                android:textColor="@color/colorTextPrimary"/>
+                android:text="@string/priceLabel"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/editTextProductPrice"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:layout_marginLeft="@dimen/std16dp"
-                android:textColor="@color/colorTextSecundary"
-                android:textAlignment="textEnd"/>
+                android:inputType="number"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorTextSecundary" />
 
             <TextView
                 android:id="@+id/labelSupplier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Supplier"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="@dimen/std16dp"
-                android:textSize="16sp"
-                android:textColor="@color/colorTextPrimary"/>
+                android:text="@string/supplierLabel"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <EditText
                     android:id="@+id/editTextSupplier"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginLeft="@dimen/std16dp"
                     android:layout_marginRight="@dimen/std16dp"
-                    android:textColor="@color/colorTextSecundary"/>
+                    android:layout_weight="1"
+                    android:textColor="@color/colorTextSecundary" />
+
                 <ImageView
                     android:id="@+id/ic_mail"
                     android:layout_width="@dimen/iconSize"
                     android:layout_height="@dimen/iconSize"
-                    android:src="@drawable/ic_mail"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/std16dp"/>
+                    android:layout_marginLeft="@dimen/std16dp"
+                    android:src="@drawable/ic_mail" />
+
                 <ImageView
                     android:id="@+id/ic_phone"
                     android:layout_width="@dimen/iconSize"
                     android:layout_height="@dimen/iconSize"
-                    android:src="@drawable/ic_phone"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/std32dp"
                     android:layout_marginRight="@dimen/std32dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:src="@drawable/ic_phone" />
             </LinearLayout>
 
 
@@ -145,36 +152,38 @@
                 android:id="@+id/labelSupplierEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email address"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="@dimen/std16dp"
-                android:textSize="16sp"
-                android:textColor="@color/colorTextPrimary"/>
+                android:text="@string/supplierEmailLabel"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/editTextSupplierEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/std16dp"
                 android:layout_marginRight="@dimen/std16dp"
-                android:textColor="@color/colorTextSecundary"/>
+                android:textColor="@color/colorTextSecundary" />
 
             <TextView
                 android:id="@+id/labelSupplierPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Telephone number"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
-                android:textSize="16sp"
-                android:textColor="@color/colorTextPrimary"/>
+                android:text="@string/supplierPhoneLabel"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/editTextSupplierPhone"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:layout_marginBottom="@dimen/std16dp"
                 android:layout_marginLeft="@dimen/std16dp"
-                android:textColor="@color/colorTextSecundary"
-                android:layout_marginBottom="@dimen/std16dp"/>
+                android:inputType="number"
+                android:textColor="@color/colorTextSecundary" />
 
         </LinearLayout>
 
@@ -184,11 +193,11 @@
         android:id="@+id/fabAdd"
         android:layout_width="@dimen/fabSize"
         android:layout_height="@dimen/fabSize"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
         android:layout_marginRight="@dimen/std16dp"
-        android:src="@drawable/ic_add_button"/>
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_add_button" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabDelete"
@@ -196,11 +205,9 @@
         android:layout_height="@dimen/fabSize"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="@dimen/std16dp"
         android:layout_marginBottom="@dimen/std16dp"
+        android:layout_marginRight="@dimen/std16dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="#ea6b48"
         android:src="@drawable/ic_delete_button" />
-
-
 </RelativeLayout>

@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.example.android.inventoryapp.R;
 import com.example.android.inventoryapp.data.ProductContract;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by DTPAdmin on 18/05/2018.
  */
@@ -68,13 +70,16 @@ public class ProductCursorAdapter extends CursorAdapter {
         // Read the values from the current Product
         String productName = cursor.getString(nameColumnIndex);
         final String productQuantity = cursor.getString(quantityColumnIndex);
-        String productPrice = cursor.getString(priceColumnIndex);
+        Double productPrice = cursor.getDouble(priceColumnIndex);
         final Long productId = cursor.getLong(idColumnIndex);
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        String formattedPrice = decimalFormat.format(productPrice);
 
         // Populate the TextViews with the read values
         nameTextView.setText(productName);
         quantityTextView.setText(productQuantity);
-        priceTextView.setText(productPrice);
+        priceTextView.setText(formattedPrice);
 
         // Check for 0 quantity
         checkForZeroQuantity();

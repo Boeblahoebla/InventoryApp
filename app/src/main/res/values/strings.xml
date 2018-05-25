@@ -12,6 +12,16 @@
     <string name="productSoldOut">Product sold OUT!</string>
     <string name="productDeleted">Product deleted</string>
 
+    <string name="totalList">Total list of products</string>
+    <string name="emptyList">The database is still empty</string>
+    <string name="fillList">Add products using the blue button</string>
+    <string name="nameLabel">Product Name</string>
+    <string name="quantityLabel">Quantity</string>
+    <string name="priceLabel">Price (€)</string>
+    <string name="supplierLabel">Supplier</string>µ
+    <string name="supplierEmailLabel">Email address</string>
+    <string name="supplierPhoneLabel">Telephone number</string>
+
     <string name="queryError">Can not query unknown URI </string>
     <string name="insertErrorUri">Insertion is not supported for </string>
     <string name="insertErrorFailed">Failed to insert row for </string>
