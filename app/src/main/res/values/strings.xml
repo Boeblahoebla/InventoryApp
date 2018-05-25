@@ -24,6 +24,8 @@
     <string name="unknownUri">Unkown URI </string>
     <string name="withMatch"> with match </string>
 
+    <string name="mailSubject">New order for </string>
+
     <string name="sureDelete">Are you sure you want to delete this data?</string>
     <string name="noNegValues">No negative values allowed</string>
     <string name="checkIncomplete">Please check for incomplete or incorrect information</string>

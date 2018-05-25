@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.example.android.inventoryapp.R;
 import com.example.android.inventoryapp.data.ProductContract;
 
+import java.util.Set;
+
 public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
     /**
@@ -121,8 +123,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
 
         // If the intent data is empty, set the label to "Add a product"
         if (mCurrentProductUri == null){
-            String labelToSet = getString(R.string.editorActivityLabelNewProduct);
-            mTextViewActivityLabel.setText(labelToSet);
+            mTextViewActivityLabel.setText(getString(R.string.editorActivityLabelNewProduct));
 
             // Disable the button to delete
             fabDelete.setVisibility(View.GONE);
@@ -131,8 +132,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             // set the label to "Edit a product" and initialise the loader to read the product data
             // from the database
         } else {
-            String labelToSet = getString(R.string.editorActivityLabelEditProduct);
-            mTextViewActivityLabel.setText(labelToSet);
+            mTextViewActivityLabel.setText(getString(R.string.editorActivityLabelEditProduct));
 
             getLoaderManager().initLoader(EXISTING_PRODUCT_LOADER, null, this);
         }
@@ -199,19 +199,30 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     // Method to contact the supplier
     private void contactSupplier(String how){
         if (how.equals("mail")){
-            String mailAddress = "mailto:" + mEditTextSupplierEmail.getText().toString();
+            // Get variables to use in intent
+            String mailAddress = mEditTextSupplierEmail.getText().toString();
             String productName = mEditTextProductName.getText().toString();
 
-            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            // Set up and start the intent
+            Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/html");
-            intent.setData(Uri.parse(mailAddress));
-            intent.putExtra(Intent.EXTRA_SUBJECT, "New order for " + productName);
+            intent.putExtra(android.content.Intent.EXTRA_EMAIL, mailAddress);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Mail order for " + productName);
 
-            startActivity(Intent.createChooser(intent, "Mail supplier"));
+            startActivity(intent);
+
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" +
+                    mailAddress));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mailSubject) +
+                    productName);
+
+            startActivity(Intent.createChooser(emailIntent, "Mail supplier"));
 
         } else {
+            // Get variables to use in intent
             String phone = mEditTextSupplierPhone.getText().toString().trim();
 
+            // Setup and start the intent
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:" + phone));
             startActivity(intent);
@@ -284,7 +295,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
 
         // When it is a new product and all the values are empty,
         // just quit the method early as nothing is being added
-
         if (mCurrentProductUri == null &&
                 TextUtils.isEmpty(productName) && TextUtils.isEmpty(productQuantity) &&
                 TextUtils.isEmpty(productPrice) && TextUtils.isEmpty(productSupplier) &&
