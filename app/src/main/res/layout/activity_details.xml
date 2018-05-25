@@ -62,7 +62,7 @@
 
                 <EditText
                     android:id="@+id/editTextProductQuantity"
-                    android:layout_width="50dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/std16dp"
                     android:inputType="number"
@@ -98,7 +98,7 @@
 
             <EditText
                 android:id="@+id/editTextProductPrice"
-                android:layout_width="50dp"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/std16dp"
                 android:inputType="number"

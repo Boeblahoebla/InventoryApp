@@ -20,11 +20,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.text.DecimalFormat;
 
 import com.example.android.inventoryapp.R;
 import com.example.android.inventoryapp.data.ProductContract;
-
-import java.util.Set;
 
 public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -474,10 +473,14 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             // Update the views with the respective data
             mEditTextProductName.setText(productName);
             mEditTextProductQuantity.setText(Integer.toString(quantity));
-            mEditTextProductPrice.setText(Integer.toString(price));
             mEditTextSupplier.setText(supplier);
             mEditTextSupplierEmail.setText(supplierEmail);
             mEditTextSupplierPhone.setText(Integer.toString(supplierPhone));
+
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+            String formattedPrice = decimalFormat.format(price);
+
+            mEditTextProductPrice.setText(formattedPrice);
         }
     }
 
