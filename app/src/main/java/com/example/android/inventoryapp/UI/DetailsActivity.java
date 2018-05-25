@@ -204,13 +204,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             String productName = mEditTextProductName.getText().toString();
 
             // Set up and start the intent
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/html");
-            intent.putExtra(android.content.Intent.EXTRA_EMAIL, mailAddress);
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Mail order for " + productName);
-
-            startActivity(intent);
-
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" +
                     mailAddress));
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mailSubject) +
