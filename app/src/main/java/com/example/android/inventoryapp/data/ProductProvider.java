@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.android.inventoryapp.R;
+
 /**
  * Created by DTPAdmin on 17/05/2018.
  */
@@ -80,7 +82,8 @@ public class ProductProvider extends ContentProvider {
                 break;
             // in neither case, throw an exception
             default:
-                throw new IllegalArgumentException("Can not query unknown URI " + uri);
+                String errorMessage = getContext().getString(R.string.queryError);
+                throw new IllegalArgumentException(errorMessage + uri);
         }
 
         // Set a notification on the Uri to know what content URI the cursor was created for
@@ -100,15 +103,14 @@ public class ProductProvider extends ContentProvider {
             case PRODUCTS:
                 return insertProduct(uri, contentValues);
             default:
-                throw new IllegalArgumentException("Insertion is not supported for " + uri);
+                String errorMessage = getContext().getString(R.string.insertErrorUri);
+                throw new IllegalArgumentException(errorMessage + uri);
         }
     }
 
     // Insert a Product with the given values and return the
     // content URI for that particular row in the database
     private Uri insertProduct(Uri uri, ContentValues values) {
-
-        // TODO: DATA validation if the data entered is correct
 
         // Get writable database
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
@@ -119,7 +121,8 @@ public class ProductProvider extends ContentProvider {
 
         // If the insert has failed, return "null" as there is no URI for an inserted row
         if (id == -1){
-            Log.e("ProductProvider", "Failed to insert row for " + uri);
+            String errorMessage = getContext().getString(R.string.insertErrorFailed);
+            Log.e("ProductProvider", errorMessage + uri);
             return null;
         }
 
@@ -155,16 +158,14 @@ public class ProductProvider extends ContentProvider {
                 rowsAffected = updateProduct(uri, contentValues, selection, selectionargs);
                 return rowsAffected;
             default:
-                throw new IllegalArgumentException("Update is not supported for " + uri);
+                String errorMessage = getContext().getString(R.string.updateError);
+                throw new IllegalArgumentException(errorMessage + uri);
         }
     }
 
     // Update method to apply changes to the rows, specified in selection and selectionArgs
     // and return the number of rows affected
     private int updateProduct(Uri uri, ContentValues values, String selection, String[] selectionArgs){
-
-        // TODO: DATA validation if the data entered is correct
-
         // Get a writable database
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
 
@@ -203,12 +204,13 @@ public class ProductProvider extends ContentProvider {
             case PRODUCT_ID:
                 // We now have a selection and selectionArgs, so
                 // delete the selected rows with the valid selection and selectionArgs
-                selection = PRODUCT_ID + "=?";
+                selection = ProductContract.ProductEntry._ID + "=?";
                 selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
                 rowsDeleted = database.delete(ProductContract.ProductEntry.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
-                throw new IllegalArgumentException("Deletion is not supported for " + uri);
+                String errorMessage = getContext().getString(R.string.deleteError);
+                throw new IllegalArgumentException(errorMessage + uri);
         }
 
         // If there are rows affected notify the listeners of such
@@ -236,7 +238,9 @@ public class ProductProvider extends ContentProvider {
                 // We expect a list item as type because we work with specific items in the table
                 return ProductContract.ProductEntry.CONTENT_ITEM_TYPE;
             default:
-                throw new IllegalStateException("Unknown URI " + uri + " with match " + match);
+                String errorMessage = getContext().getString(R.string.unknownUri);
+                String withMatch = getContext().getString(R.string.withMatch);
+                throw new IllegalStateException(errorMessage + uri + withMatch + match);
         }
     }
 }

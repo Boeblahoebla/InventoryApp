@@ -18,9 +18,9 @@ public final class ProductContract {
      * the content provider
      */
     // Content Authority (name for entire content provider)
-    public static final String CONTENT_AUTHORITY = "com.example.inventoryapp";
+    public static final String CONTENT_AUTHORITY = "com.example.android.inventoryapp";
 
-    // Base of all URI's apps will use to contect the contact provider
+    // Base of all URI's apps will use to use the provider
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     // Possible path
@@ -36,13 +36,13 @@ public final class ProductContract {
         public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_PRODUCTS);
 
         /**
-         * The MIME type of the {@link #CONTENT_URI} for a list of pets.
+         * The MIME type of the {@link #CONTENT_URI} for a list of products.
          */
         public static final String CONTENT_LIST_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PRODUCTS;
 
         /**
-         * The MIME type of the {@link #CONTENT_URI} for a single pet.
+         * The MIME type of the {@link #CONTENT_URI} for a single product.
          */
         public static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PRODUCTS;

@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.inventoryapp.UI.CatalogActivity">
 
     <TextView
+        android:id="@+id/ActivityLabel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorPrimaryLight"
         android:gravity="center_vertical"
         android:textAlignment="gravity"
-        android:paddingLeft="16dp"
+        android:paddingLeft="@dimen/std16dp"
         android:text="Total list of products"/>
 
     <ListView
+        android:id="@+id/productListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/colorDivider">
+        android:divider="@color/colorDivider"
+        android:layout_below="@id/ActivityLabel">
     </ListView>
 
     <RelativeLayout
@@ -34,7 +36,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_empty_data_colored"
             android:layout_centerInParent="true"
-            android:layout_margin="16dp"/>
+            android:layout_margin="@dimen/std16dp"/>
 
         <TextView
             android:id="@+id/noDataTextView"
@@ -59,12 +61,12 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/fabSize"
+        android:layout_height="@dimen/fabSize"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/std16dp"
         android:src="@drawable/ic_add_button"/>
 
 </RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fabSize">50dp</dimen>
+    <dimen name="iconSize">28dp</dimen>
+    <dimen name="std16dp">16dp</dimen>
+    <dimen name="std8dp">8dp</dimen>
+    <dimen name="std32dp">32dp</dimen>
+</resources>

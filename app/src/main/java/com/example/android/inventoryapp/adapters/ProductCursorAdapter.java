@@ -1,14 +1,20 @@
 package com.example.android.inventoryapp.adapters;
 
+import android.app.Application;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.inventoryapp.R;
 import com.example.android.inventoryapp.data.ProductContract;
@@ -19,15 +25,15 @@ import com.example.android.inventoryapp.data.ProductContract;
 
 public class ProductCursorAdapter extends CursorAdapter {
 
-    /** constants of the views
+    /** declarations of the views
      * to be handled by the adapter
      * **/
 
     // TextViews
-    TextView nameTextView, quantityTextView, priceTextView;
+    private TextView nameTextView, quantityTextView, priceTextView;
 
     // ImageView
-    ImageView saleImageView;
+    private ImageView saleImageView;
 
     /** **/
 
@@ -48,7 +54,7 @@ public class ProductCursorAdapter extends CursorAdapter {
 
     // Binds the Product data through use of the cursor (which row)
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
         // Initialises the views
         initializeViews(view);
 
@@ -59,20 +65,51 @@ public class ProductCursorAdapter extends CursorAdapter {
                 ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY);
         int priceColumnIndex = cursor.getColumnIndex(
                 ProductContract.ProductEntry.COLUMN_PRODUCT_PRICE);
+        int idColumnIndex = cursor.getColumnIndex(
+                ProductContract.ProductEntry._ID);
 
         // Read the values from the current Product
         String productName = cursor.getString(nameColumnIndex);
-        String productQuantity = cursor.getString(quantityColumnIndex);
+        final String productQuantity = cursor.getString(quantityColumnIndex);
         String productPrice = cursor.getString(priceColumnIndex);
+        final Long productId = cursor.getLong(idColumnIndex);
 
         // Populate the TextViews with the read values
         nameTextView.setText(productName);
         quantityTextView.setText(productQuantity);
         priceTextView.setText(productPrice);
 
-        // Check for zero quantity to disable the sale imageView
-        // Which can only be visible when there are products available for sale
+        // Check for 0 quantity
         checkForZeroQuantity();
+
+        // Set an onClickListener for the saleImageView
+        saleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get the quantity as an integer
+                int currentQuantity = Integer.parseInt(productQuantity);
+
+                // Decrement the quantity by one
+                currentQuantity-=1;
+                Uri quantityUri = ContentUris.withAppendedId(ProductContract.ProductEntry.CONTENT_URI, productId);
+
+                // Assign the new values
+                ContentValues values = new ContentValues();
+                values.put(ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY, currentQuantity);
+
+                // Update the counter (decrement by one)
+                context.getContentResolver().update(quantityUri, values, null, null);
+
+                // Provide a toast message saying the product has been sold or sold out
+                if (currentQuantity == 0){
+                    String message = context.getString(R.string.productSoldOut);
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                } else {
+                    String message = context.getString(R.string.productSold);
+                    Toast.makeText(context, message , Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     // Helper method to initialise the views
@@ -85,26 +122,14 @@ public class ProductCursorAdapter extends CursorAdapter {
 
     // Helper method to look for zero quantity
     private void checkForZeroQuantity(){
-        String quantity = quantityTextView.getText().toString();
+        int quantity = Integer.parseInt(quantityTextView.getText().toString());
 
         // If there are no more products available for sale
         // disable the sales button
-        if (quantity == "0"){
-            saleImageView.setVisibility(View.GONE);
+        if (quantity == 0){
+            saleImageView.setVisibility(View.INVISIBLE);
+        } else {
+            saleImageView.setVisibility(View.VISIBLE);
         }
-    }
-
-    @Override
-    public View getView(final int position, View convertView, final ViewGroup parent) {
-
-        saleImageView.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                ((ListView) parent).performItemClick(v, position, 0); // Let the event be handled in onItemClick()
-            }
-        });
-
-        return super.getView(position, convertView, parent);
     }
 }

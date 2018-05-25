@@ -4,4 +4,33 @@
     <string name="example_product_name">Motherboard MSI a78m e35</string>
     <string name="example_product_quantity">10</string>
     <string name="example_product_price">85</string>
+
+    <string name="editorActivityLabelNewProduct">Add a product</string>
+    <string name="editorActivityLabelEditProduct">Edit a product</string>
+
+    <string name="productSold">Product sold</string>
+    <string name="productSoldOut">Product sold OUT!</string>
+    <string name="productDeleted">Product deleted</string>
+
+    <string name="queryError">Can not query unknown URI </string>
+    <string name="insertErrorUri">Insertion is not supported for </string>
+    <string name="insertErrorFailed">Failed to insert row for </string>
+    <string name="updateError">Update is not supported for </string>
+    <string name="deleteError">Deletion is not supported for </string>
+    <string name="insertionFailed">Insertion failed</string>
+    <string name="insertionSuccess">Insertion successful</string>
+    <string name="updateFailed">Update failed</string>
+    <string name="updateSuccess">Update successful</string>
+    <string name="unknownUri">Unkown URI </string>
+    <string name="withMatch"> with match </string>
+
+    <string name="sureDelete">Are you sure you want to delete this data?</string>
+    <string name="noNegValues">No negative values allowed</string>
+    <string name="checkIncomplete">Please check for incomplete or incorrect information</string>
+    <string name="dataLeftUnchanged">Data left unsaved</string>
+    <string name="discard">Discard?</string>
+    <string name="keepEdit">Keep editing</string>
+    <string name="yesDelete">Yes, delete</string>
+    <string name="cancel">Cancel</string>
+
 </resources>
