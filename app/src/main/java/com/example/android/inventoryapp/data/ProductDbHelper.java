@@ -48,6 +48,10 @@ public class ProductDbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_PRODUCTS_TABLE);
     }
 
+    /**
+     * Override method that gets started when the
+     * database gets upgraded
+     * **/
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ProductEntry.TABLE_NAME);
