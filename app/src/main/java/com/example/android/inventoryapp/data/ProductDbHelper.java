@@ -20,7 +20,7 @@ public class ProductDbHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "store.db";
 
     // Database version as integer
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     /**
      * Constructor
@@ -50,6 +50,7 @@ public class ProductDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        // The database is supposed to stay the same version for now
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ProductEntry.TABLE_NAME);
+        onCreate(sqLiteDatabase);
     }
 }
