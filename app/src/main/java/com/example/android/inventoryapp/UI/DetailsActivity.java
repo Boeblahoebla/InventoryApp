@@ -46,13 +46,13 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                         mEditTextSupplier, mEditTextSupplierEmail, mEditTextSupplierPhone;
 
     // ImageViews
-    private ImageView plusSign, minusSign, orderMail, orderPhone;
+    private ImageView plusSign, minusSign, orderMail, orderPhone, trashIcon;
 
     // Boolean to keep track of changes in the current product
     private boolean mProductHasChanged = false;
 
     // Floating action buttons
-    private FloatingActionButton fabSave, fabDelete;
+    private FloatingActionButton fabSave;
 
     // set an onTouch listener to listen for touches of the views,
     // implying information ahs been changed
@@ -83,7 +83,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         initialiseOnTouchListeners();
 
         // Setup FAB to save the Product
-        initialiseFabs();
+        initialiseFab();
 
         // Check which intent was used to start this activity
         // and set the top label accordingly
@@ -91,7 +91,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     }
 
     // Method to initialise the floating action buttons
-    private void initialiseFabs(){
+    private void initialiseFab(){
         fabSave = findViewById(R.id.fabAdd);
         fabSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,14 +103,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                     saveProduct();
                     finish();
                 }
-            }
-        });
-
-        fabDelete = findViewById(R.id.fabDelete);
-        fabDelete.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                showDeleteConfirmationDialog();
             }
         });
     }
@@ -125,7 +117,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             mTextViewActivityLabel.setText(getString(R.string.editorActivityLabelNewProduct));
 
             // Disable the button to delete
-            fabDelete.setVisibility(View.GONE);
+            trashIcon.setVisibility(View.GONE);
 
             // if the intent data is not empty, but holds a certain product
             // set the label to "Edit a product" and initialise the loader to read the product data
@@ -152,6 +144,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         minusSign = findViewById(R.id.ic_minus);
         orderMail = findViewById(R.id.ic_mail);
         orderPhone = findViewById(R.id.ic_phone);
+        trashIcon = findViewById(R.id.ic_trash);
 
         if (mCurrentProductUri == null){
             orderMail.setVisibility(View.GONE);
@@ -191,6 +184,13 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             public void onClick(View view) {
                 String howToContact = "phone";
                 contactSupplier(howToContact);
+            }
+        });
+
+        trashIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDeleteConfirmationDialog();
             }
         });
     }
